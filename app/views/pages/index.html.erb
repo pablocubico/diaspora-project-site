@@ -1,20 +1,68 @@
 <% content_for :wrapper_class, "index_page" %>
 
-<div id="masthead" class="hero">
-  <div class="container">
-    <h1><%= t '.headline' %></h1>
-    <h2><%= t '.byline' %></h2>
-  </div>
-</div>
-
-<div class="container" id="earth_container">
+<div class="container" id="home-logo-container">
   <div class="row">
     <div class="center">
-      <%= image_tag "earthD2.png", alt: t('.earth_alt') %>
+      <%= image_tag "home-logo.png", alt: t('.earth_alt') %>
+      <h2 class="tagline">
+        <%= t '.byline' %>
+      </h2>
+      <div class="home-actions">
+        <%= link_to t('.call_to_action'), root_url(subdomain: false, anchor: "get_started"), class: 'call-to-action nsf-btn nsf-primary' %>
+        <%= t('.call_to_action_subtext').html_safe %>
+      </div>
     </div>
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <div id="why">
+      <div class="horizontal-tabs-wrapper">
+        <div class="horizontal-tabs-nav">
+          <h4>Philosophy</h4>
+          <a href="#" data-target="decentralization" class="active"><%= t '.decentralization' %></a>
+          <a href="#" data-target="freedom"><%= t '.freedom' %></a>
+          <a href="#" data-target="privacy"><%= t '.privacy' %></a>
+        </div>
+        <div class="horizontal-tabs-panels">
+          <div id="decentralization" class="horizontal-tabs-panel active">
+        
+            <h4><%= t '.decentralization_title' %></h4>
+
+            <div class="cf"></div>
+
+            <div class="decentralization-left">
+              <h5><%= t 'pages.about.this' %></h5>
+              <%= image_tag "network-distributed.png" %>
+              <p><%= t 'pages.about.this_ex' %></p>
+            </div>
+            <div class="decentralization-right">
+              <h5><%= t 'pages.about.notthis' %></h5>
+              <%= image_tag "network-centralized.png" %>
+              <p><%= t 'pages.about.notthis_ex' %></p>
+            </div>
+
+            <div class="cf"></div>
+
+            <p><%= t '.decentralization_about' %></p>
+
+            <%= link_to t('buttons.find_more'), about_path, class: "nsf-btn nsf-secondary" %>
+
+          </div>
+          <div id="freedom" class="horizontal-tabs-panel">
+            <p><%= t '.freedom_about' %></p>
+          </div>
+          <div id="privacy" class="horizontal-tabs-panel">
+            <p><%= t '.privacy_about' %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
 <div class="container">
   <div class="row top_spacing">
     <h1><%= t '.key_philosophies' %></h1>
@@ -157,3 +205,4 @@
     </div>
   </div>
 </div>
+-->

@@ -2,6 +2,12 @@
  * TODO write readable code and replace with bootstrap-files out of the gem!
  */
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+
+$primary-font: 'Open Sans', sans-serif;
+$primary-color: #ff6200; // light orange
+$secondary-color: #5E792C; // desaturated green
+
 /* Transision defaults */
 .navbar-inner {
   position: fixed;
@@ -9,11 +15,10 @@
   width: 100%;
   left: 0;
   top: 0;
-  background-color: #221e1e;
-  border-bottom: 1px solid #000;
-  -webkit-box-shadow: 0 1px 2px black;
-  -moz-box-shadow: 0 1px 2px black;
-  box-shadow: 0 1px 2px black; }
+  background-color: rgba(253,252,255,.75);
+  height: 60px;
+}
+
   header .header_container {
     padding: 0px 15px; }
   header nav {
@@ -36,8 +41,8 @@
     header nav .btn {
       margin-left: 10px; }
 
-.navbar-inner img{
-  height: 50px;
+.navbar-inner .brand img {
+  margin-top: 10px;
 }
 
 #mainnav.pull-right {
@@ -64,7 +69,11 @@
   color: #999999; }
 
 body {
-  margin-top: 70px; }
+  padding-top: 70px; 
+  background: url(dandelion-bg.jpg) top center no-repeat;
+  background-attachment: fixed;
+  font-family: $primary-font;
+}
 
 #collage-container {
   text-align: center; }
@@ -388,13 +397,12 @@ section {
   text-shadow: 0 0px 3px #fff; }
 
 #locale-switcher {
-  text-align: right;
-  border-left: 1px solid #eee;
-  height: 5em;
+
+  width: auto;
+  margin-right: 3px;
 
   ul {
     text-align: left;
-
     .current a {
       font-weight: bold;
     }
@@ -404,6 +412,8 @@ section {
   .dropdown-toggle:after {
     content:'';
     border-top-color: black;
+    vertical-align: middle;
+    margin-top: -1px;
   }
 
   .dropdown-menu {
@@ -416,9 +426,9 @@ section {
     padding: 5px 0;
     margin: 2px 0 0;
     list-style: none;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    border-radius: none;
   }
 
   .btn-group {
@@ -433,8 +443,8 @@ section {
 }
 
 #CC-licence {
-  margin: 12em 0 3em 0;
-  text-align: center;
+  margin: 30px 25px 0 25px;
+  text-align: left;
   font-size: 10px;
 
   img {
@@ -451,5 +461,188 @@ section {
   a {
     font-size: 10px;
     color: #666;
+  }
+}
+
+/* Brand new styles */
+
+/* Not-so-flat buttons */
+
+.nsf-btn {
+  line-height: 30px;
+  padding: 0 10px;
+  display: inline-block;
+  color: black;
+  /*background: white url(noise-texture.png);*/
+  background-color: white;
+  box-shadow: inset 0px -2px 15px rgba(0,0,0,.15);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-bottom: 2px solid rgba(0,0,0,.3);
+  border-top: 1px solid rgba(0,0,0,.2);
+  border-left: 1px solid rgba(0,0,0,.2);
+  border-right: 1px solid rgba(0,0,0,.2);
+  transition: box-shadow .3s;
+  border-radius: 3px;
+}
+
+.nsf-btn:hover, .nsf-btn:focus {
+  box-shadow: none;
+  transition: box-shadow .3s;
+  color: black;
+}
+
+.nsf-btn.nsf-primary {
+  /*background: $primary-color url(noise-texture.png);*/
+  background-color: $primary-color;
+  text-shadow: 0px 0px 1px black;
+  color: white;
+}
+
+.nsf-btn.nsf-secondary {
+  /*background: $primary-color url(noise-texture.png);*/
+  background-color: $secondary-color;
+  text-shadow: 0px 0px 1px black;
+  color: white;
+}
+
+.nsf-btn:hover.nsf-primary {
+  color: white;
+}
+
+/* General overrides */
+a:hover {
+  text-decoration: none;
+}
+
+
+/* clearfix helpers */
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+/* Home styles */
+#home-logo-container {
+  padding-top: 20px;
+}
+
+h2.tagline {
+  color: $primary-color;
+  font-weight: 300;
+  background: rgba(0,0,0,.75);
+  font-size: 18pt;
+  margin: 20px auto;
+  padding: 20px 30px;
+  display: inline-block;
+  font-family: $primary-font;
+}
+
+.home-actions {
+  font-size: 18pt;
+  line-height: 70px;
+  font-weight: 300;
+  .call-to-action {
+    line-height: 65px;
+    color: white;
+    display: inline-block;
+    height: 70px;
+    padding: 0px 20px;
+  }
+
+}
+
+.horizontal-tabs-wrapper {
+  display: table;
+  background: rgba(255,255,255,.75);
+  font-family: $primary-font;
+  font-weight: 300;
+  .horizontal-tabs-nav {
+    vertical-align: top;
+    display: table-cell;
+    width: 180px;
+    h4 {
+      margin-top: 0;
+      padding: 20px;
+      font-weight: 400;
+      font-size: 16pt;
+    }
+    a {
+      padding: 20px;
+      display: block;
+      color: black;
+      font-size: 12pt;
+      transition: background .3s;
+
+      &:hover {
+        background: rgba(255,255,255,.85);
+        transition: background .3s;
+      }
+      &.active {
+        background: white;
+      }
+    }
+  }
+  .horizontal-tabs-panels {
+    vertical-align: top;
+    background: white;
+    display: table-cell;
+    padding: 20px;
+    .horizontal-tabs-panel {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
+
+#decentralization {
+  img {
+    max-width: 100%;
+  }
+  .decentralization-left {
+    float: left;
+    padding: 2%;
+    width: 46%;
+  }
+  .decentralization-right {
+    float: right;
+    padding: 2%;
+    width: 46%;
+  }
+}
+
+/* Footer */
+footer {
+  background: rgba(0,0,0,.75);
+  margin-top: 20px;
+  border: none;
+
+  .footer-logo {
+    text-align: center;
+    img {
+      margin: 10px auto;
+      display: inline-block;
+    }
+  }
+
+  .links {
+    h5 {
+      color: $primary-color;
+      font-weight: 300;
+      margin-bottom: 10px;
+      margin-top: 0;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+    }
   }
 }

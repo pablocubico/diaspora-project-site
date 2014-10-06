@@ -11,6 +11,9 @@
   <%= stylesheet_link_tag 'application', :media => 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 <body>
   <div id="wrap">
@@ -18,7 +21,7 @@
       <div class="navbar-inner">
         <div class="container-fluid">
           <%= link_to root_url(subdomain: false), class: 'brand' do %>
-            <%= image_tag 'logo.png', alt: t('title'), title: t('title'), id: 'header-logo' %>
+            <%= image_tag 'topbar-logo.png', alt: t('title'), title: t('title'), id: 'header-logo' %>
           <% end %>
 
           <div id="mainnav" class="pull-right">
@@ -30,8 +33,26 @@
               <li><%= link_to t('pages.tutorials.menu_title'), tutorials_url(subdomain: false) %></li>
               <!-- <li><%= link_to t('.planet'), 'http://planet.diasporafoundation.org' %></li> -->
             </ul>
-            <%= link_to t('buttons.host_pod'), about_url(subdomain: false, anchor: "host"), class: 'btn primary' %>
-            <%= link_to t('buttons.join_diaspora'), root_url(subdomain: false, anchor: "get_started"), class: 'btn success' %>
+            <%= link_to t('buttons.host_pod'), about_url(subdomain: false, anchor: "host"), class: 'nsf-btn' %>
+            <%= link_to t('buttons.join_diaspora'), root_url(subdomain: false, anchor: "get_started"), class: 'nsf-primary nsf-btn' %>
+
+            <div id="locale-switcher" class="span4">
+              <div class="btn-group">
+                <a class="nsf-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-globe"></i> <%= AVAILABLE_LOCALES[current_locale] %>
+                </a>
+
+                <ul class="dropdown-menu">
+                  <%= locale_switcher_entries %>
+                  <li>
+                    <a href="https://wiki.diasporafoundation.org/Contribute_translations">
+                      <%= t '.translate' %>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -47,82 +68,75 @@
   <footer>
     <div class="container">
       <div class="row">
-        <div class="span10" id="links">
-          <h4>
-            <%= t '.useful_resources' %>
-          </h4>
-          <div class="span3">
-            <ul>
-              <li>
-                <a href="http://github.com/diaspora/diaspora/">
-                  <%= t '.codebase' %>
-                </a>
-              </li>
-              <li>
-                <a href="https://wiki.diasporafoundation.org/">
-                  <%= t '.documentation' %>
-                </a>
-              </li>
-              <li>
-                <a href="http://github.com/diaspora/diaspora/issues">
-                  <%= t '.report_bugs' %>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="span3">
-            <ul>
-              <li>
-                <a href="http://webchat.freenode.net/?channels=diaspora">
-                  <%= t '.irc_general' %>
-                </a>
-              </li>
-              <li>
-                <a href="http://webchat.freenode.net/?channels=diaspora-dev">
-                  <%= t '.irc_development' %>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="span3">
-            <ul>
-              <li>
-                <a href="http://groups.google.com/group/diaspora-discuss">
-                  <%= t '.discussion_general' %>
-                </a>
-              </li>
-              <li>
-                <a href="http://groups.google.com/group/diaspora-dev">
-                  <%= t '.discussion_development' %>
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div class="span4" id="footer-logos">
+          <div class="footer-logo"><%= image_tag 'diaspora-logo-footer.png', alt: t('.diaspora_footer_alt') %></div>
+          <div class="footer-logo"><%= image_tag 'agplv3-footer.png', alt: t('.agplv3_footer_alt') %></div>
+          <div class="footer-logo"><%= image_tag 'osi-footer.png', alt: t('.osi_footer_alt') %></div>
         </div>
 
-        <div id="locale-switcher" class="span4">
-          <div class="btn-group">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-              <%= t '.choose_language' %>
-            </a>
+        <div class="span12">
+          <div class="row">
 
-            <ul class="dropdown-menu">
-              <%= locale_switcher_entries %>
-              <li>
-              	<a href="https://wiki.diasporafoundation.org/Contribute_translations">
-              		<%= t '.translate' %>
-              	</a>
-              </li>
-            </ul>
+            <div class="span4 links">
+              <h5><%= t '.contribute' %></h5>
+              <ul>
+                <li>
+                  <a href="http://github.com/diaspora/diaspora/">
+                    <%= t '.codebase' %>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://wiki.diasporafoundation.org/">
+                    <%= t '.documentation' %>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://github.com/diaspora/diaspora/issues">
+                    <%= t '.report_bugs' %>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="span4 links">
+              <h5><%= t '.community_chat' %></h5>
+              <ul>
+                <li>
+                  <a href="http://webchat.freenode.net/?channels=diaspora">
+                    <%= t '.irc_general' %>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://webchat.freenode.net/?channels=diaspora-dev">
+                    <%= t '.irc_development' %>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="span4 links">
+              <h5><%= t '.mailing_lists' %></h5>
+              <ul>
+                <li>
+                  <a href="http://groups.google.com/group/diaspora-discuss">
+                    <%= t '.discussion_general' %>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://groups.google.com/group/diaspora-dev">
+                    <%= t '.discussion_development' %>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
           </div>
-        </div>
 
-        <div class="row" id="CC-licence">
-          <div class="span16">
+          <div class="clearfix"></div>
+
+          <div id="CC-licence">
             <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
-              <%= image_tag '80x15.png', alt: t('.cc_license_alt') %>
+              <%= image_tag 'cc-footer.png', alt: t('.cc_license_alt') %>
             </a>
             <%= t('.licensed_under', site_link: '
             <a href="https://diasporafoundation.org/" property="cc:attributionName"
@@ -133,9 +147,15 @@
               #{t('.license_link_text')}
             </a>.}).html_safe %>
           </div>
+
+
         </div>
+
       </div>
+
+
     </div>
+
   </footer>
 </body>
 </html>

@@ -15,3 +15,15 @@
 //= require turbolinks
 //= require bootstrap/dropdown
 //= require_tree .
+
+$(document).ready(function() {
+	$(".horizontal-tabs-nav a").on("click", function(e) {
+		e.preventDefault();
+		$(".horizontal-tabs-nav a").removeClass("active");
+		$(this).addClass("active");
+		var id = $(this).data("target");
+		$(".horizontal-tabs-panel").hide();
+		$("#" + id).show();
+		return false;
+	});
+});

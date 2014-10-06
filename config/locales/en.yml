@@ -28,10 +28,16 @@ en:
       cc_license_alt: "Creative Commons License"
       licensed_under: "%{site_link} is licensed under a %{license_link}"
       license_link_text: "Creative Commons Attribution 3.0 Unported License"
+      diaspora_footer_alt: "Diaspora footer logo"
+      osi_footer_alt: "Open Source Initiative footer logo"
+      agplv3_footer_alt: "Affero General Public License version 3 footer logo"
   pages:
     index:
       headline: "Welcome to diaspora*"
       byline: "The online social world where you are in control"
+      philosophy: "Philosophy"
+      call_to_action: "Join!"
+      call_to_action_subtext: "or <a href=\"#why\">find out why</a>"
       register: "Sign up »"
       key_philosophies: "diaspora* is based on three key philosophies:"
       decentralization: Decentralization
